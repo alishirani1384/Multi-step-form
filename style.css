@@ -16,7 +16,6 @@
   font-family: "Ubuntu", sans-serif;
   padding: 0;
   margin: 0;
-  transition: all 1s ease-out;
 }
 .hidden {
   display: none;
@@ -65,6 +64,9 @@ body {
 .active .circle {
   background-color: var(--Light-blue);
   color: var(--Marine-blue);
+}
+.err{
+  border: 2px solid var(--Strawberry-red) !important;
 }
 .step {
   display: flex;
@@ -115,6 +117,7 @@ body {
 /* STEP 1 */
 .step-1 {
   display: flex;
+  width: 90%;
 }
 .step-1 form {
   display: flex;
@@ -125,6 +128,9 @@ body {
 }
 .label {
   color: var(--Marine-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .step-1 form input {
   padding: 1rem;
@@ -133,6 +139,9 @@ body {
   font-weight: 500;
   font-size: 1rem;
 }
+.step-1 form input:focus{
+  outline-color: var(--Purplish-blue);
+}
 form input::placeholder {
   font-weight: 500;
   font-size: 1rem;
@@ -140,10 +149,15 @@ form input::placeholder {
 }
 form .error {
   display: none;
+  color: var(--Strawberry-red);
+  font-size: .9rem;
+  font-weight: 700;
+
 }
 /* STEP 2 */
 .step-2{
   display: none;
+  width: 90%;
 }
 .step-2 form {
   display: flex;
@@ -201,6 +215,7 @@ form .error {
 /* STEP 3 */
 .step-3{
   display: none;
+  width:80%;
 }
 .step-3 form{
   display: flex;
@@ -244,6 +259,7 @@ form .error {
 /* STEP 4 */
 .step-4{
   display: none;
+  width: 80%;
 }
 .selection-box{
   display: flex;
@@ -403,6 +419,7 @@ input:checked + .slider:before {
   }
   .stp{
     gap: 1rem;
+    width: 100%;
   }
   .stp .header{
     padding-top: 0;

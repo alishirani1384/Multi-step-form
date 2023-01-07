@@ -1,15 +1,26 @@
-const steps = document.querySelectorAll(".stp");
-let current = 1;
+const infoInputs = document.querySelectorAll(".step-1 form input");
+const nextBtn = document.querySelector(".next-stp");
+let currentStep = 1;
+const step = document.querySelector(`.step-${currentStep}`);
 
-steps.forEach(step => {
-    const btn = step.querySelector(".next-stp");
-    btn.addEventListener("click", () => {
-        step.style.display = "none";
-        if (current==4) {
-            current = 1;
-        } else {
-            current++;
+
+infoInputs.forEach(input => {
+    nextBtn.addEventListener("click", () => {
+        if (!input.value) {
+            findLabel(input).nextElementSibling.style.display = "flex";
+            input.classList.add("err");
+        } else {  
+            findLabel(input).nextElementSibling.style.display = "none";
+            input.classList.remove("err")
         }
-        document.querySelector(`.step-${current}`).style.display = "flex";
     })
+
 })
+
+function findLabel(el) {
+    const idVal = el.id;
+    const labels = document.getElementsByTagName("label");
+    for (let i = 0; i < labels.length; i++) {
+      if (labels[i].htmlFor == idVal) return labels[i];
+    }
+}
