@@ -62,8 +62,8 @@ body {
   font-weight: 700;
 }
 .active .circle {
-  background-color: var(--Light-blue);
-  color: var(--Marine-blue);
+  background-color: var(--Light-blue) !important;
+  color: var(--Marine-blue) !important;
 }
 .err{
   border: 2px solid var(--Strawberry-red) !important;
@@ -116,7 +116,7 @@ body {
 }
 /* STEP 1 */
 .step-1 {
-  display: none;
+  display: flex;
   width: 90%;
 }
 .step-1 form {
