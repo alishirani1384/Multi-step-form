@@ -116,7 +116,7 @@ body {
 }
 /* STEP 1 */
 .step-1 {
-  display: flex;
+  display: none;
   width: 90%;
 }
 .step-1 form {
