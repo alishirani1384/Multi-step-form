@@ -2,6 +2,8 @@ const steps = document.querySelectorAll(".stp");
 const circleSteps = document.querySelectorAll(".step");
 const formInputs = document.querySelectorAll(".step-1 form input");
 const plans = document.querySelectorAll(".plan-card");
+const switcher = document.querySelector(".switch");
+const addons = document.querySelectorAll(".box");
 let currentStep = 1;
 let currentCircle = 0;
 
@@ -57,3 +59,25 @@ plans.forEach(plan => {
     plan.classList.add("selected");
   })
 })
+
+switcher.addEventListener("click", () => {
+  const val = switcher.querySelector('input').checked;
+  if (val) {
+    document.querySelector(".monthly").classList.remove("sw");
+    document.querySelector(".yearly").classList.add("sw");
+  } else {
+    document.querySelector(".monthly").classList.add("sw");
+    document.querySelector(".yearly").classList.remove("sw");
+  }
+})
+addons.forEach(addon => {
+  addon.addEventListener("click", () => {
+    const addonSelect = addon.querySelector("input");
+    if (addonSelect.checked) {
+      addonSelect.checked = false;
+    } else {
+      addonSelect.checked = true;
+    }
+  })
+})
+
