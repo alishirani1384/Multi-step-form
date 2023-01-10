@@ -6,6 +6,10 @@ const switcher = document.querySelector(".switch");
 const addons = document.querySelectorAll(".box");
 let currentStep = 1;
 let currentCircle = 0;
+const obj = {
+  plan:null,
+  kind:null
+}
 
 steps.forEach((step) => {
   const nextBtn = step.querySelector(".next-stp");
@@ -26,10 +30,14 @@ steps.forEach((step) => {
         currentCircle++;
     }
       document.querySelector(`.step-${currentStep}`).style.display = "flex";
-      circleSteps[currentCircle].classList.add("active")
+    circleSteps[currentCircle].classList.add("active")
+    summary(obj)
   });
 });
-
+function summary(obj) {
+  const planName = document.querySelector(".plan-name");
+  planName.innerText = `${obj.plan.innerText}(${obj.val ? "yearly" : "monthly"})`;
+}
 function validateForm() {
   let valid = true;
   for (let i = 0; i < formInputs.length; i++) {
@@ -57,6 +65,8 @@ plans.forEach(plan => {
   plan.addEventListener("click", () => {
     document.querySelector(".selected").classList.remove("selected")
     plan.classList.add("selected");
+    const planName = plan.querySelector('b');
+    obj.plan = planName;
   })
 })
 
@@ -70,6 +80,7 @@ switcher.addEventListener("click", () => {
     document.querySelector(".yearly").classList.remove("sw");
   }
   switchPrice(val);
+  obj.kind = val;
 })
 addons.forEach(addon => {
   addon.addEventListener("click", () => {
