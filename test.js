@@ -92,12 +92,15 @@ switcher.addEventListener("click", () => {
 addons.forEach((addon) => {
   addon.addEventListener("click", () => {
     const addonSelect = addon.querySelector("input");
+    
     if (addonSelect.checked) {
       addonSelect.checked = false;
       addon.classList.remove("ad");
+      showAddon(addon,false)
     } else {
       addonSelect.checked = true;
       addon.classList.add("ad");
+      showAddon(addon,true)
     }
   });
 });
@@ -114,5 +117,19 @@ function switchPrice(checked) {
     prices[0].innerHTML = `$${monthlyPrice[0]}/mo`;
     prices[1].innerHTML = `$${monthlyPrice[1]}/mo`;
     prices[2].innerHTML = `$${monthlyPrice[2]}/mo`;
+  }
+}
+function showAddon(ad,val) {
+  const temp = document.getElementsByTagName("template")[0];
+  const clone = temp.content.cloneNode(true);
+  const serviceName = clone.querySelector(".service-name");
+  const servicePrice = clone.querySelector(".servic-price");
+  if (ad && val) {
+    serviceName.innerText = ad.querySelector("label").innerText;
+  servicePrice.innerText = ad.querySelector(".price").innerText;
+  document.querySelector(".addons").appendChild(clone)
+  } else {
+    
+    document.querySelectorAll(".selected-addon")[0].remove();
   }
 }
