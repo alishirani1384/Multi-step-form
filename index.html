@@ -1,209 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-  <title>Frontend Mentor | Multi-step form</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="./test.js" defer></script>
-</head>
-<body>
-  <div class="form">
-    <div class="form-container">
-      <!-- Sidebar start -->
-      <div class="form-sidebar">
-        <div class="step active">
-          <div class="circle">
-            1
-          </div>
-          <div class="step-content">
-            <span>Step 1</span>
-            <b>Your info</b>
-          </div>
-        </div>
-        <div class="step">
-          <div class="circle">
-            2
-          </div>
-          <div class="step-content">
-            <span>Step 2</span>
-            <b>Select plan</b>
-          </div>
-        </div>
-        <div class="step">
-          <div class="circle">
-            3
-          </div>
-          <div class="step-content">
-            <span>Step 3</span>
-            <b>Add-ons</b>
-          </div>
-        </div>
-        <div class="step">
-          <div class="circle">
-            4
-          </div>
-          <div class="step-content">
-            <span>Step 4</span>
-            <b>Summary</b>
-          </div>
-        </div>
-      </div>
-      <!-- Sidebar end -->
-      <!-- * Step 1 start -->
-      <div class="stp step-1">
-        <div class="header">
-          <h1 class="title">Personal info</h1>
-          <p class="exp">Please provide your name, email address, and phone number.</p>
-        </div>
-        <form>
-          <div class="label">
-            <label for="name">Name</label>
-            <p class="error">This Field Is Required</p>
-          </div>
-          <input required type="text" id="name" placeholder="e.g. Stephen King">
-          <div class="label">
-            <label for="email">Email Address</label>
-            <p class="error">This Field Is Required</p>
-          </div>
-          <input required type="text" id="email" placeholder="e.g. stephenking@lorem.com">
-          <div class="label">
-            <label for="phone">Phone Number</label>
-            <p class="error">This Field Is Required</p>
-          </div>
-          <input required type="tel" id="phone" placeholder="e.g. +1 234 567 890">
-        </form>
-        <div class="btns">
-          <button class="next-stp" type="submit">Next Step</button>
-        </div>
-      </div>
-      <!-- Step 1 end -->
-      <!-- * Step 2 start -->
-      <div class="stp step-2">
-        <div class="header">
-          <h1 class="title">Select your plan</h1>
-          <p class="exp">You have the option of monthly or yearly billing.</p>
-        </div>
-        <form>
-          <div class="plan-card selected">
-            <img src="./assets/images/icon-arcade.svg" alt="arcade">
-            <div class="plan-info chosen">
-              <b>Arcade</b>
-              <span class="plan-priced">$9/mo</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Multi-step form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./test.js" defer></script>
+  </head>
+  <body>
+    <div class="form">
+      <div class="form-container">
+        <!-- Sidebar start -->
+        <div class="form-sidebar">
+          <div class="step active">
+            <div class="circle">1</div>
+            <div class="step-content">
+              <span>Step 1</span>
+              <b>Your info</b>
             </div>
           </div>
-          <div class="plan-card">
-            <img src="./assets/images/icon-advanced.svg" alt="arcade">
-            <div class="plan-info">
-              <b>Advanced</b>
-              <span class="plan-priced">$12/mo</span>
+          <div class="step">
+            <div class="circle">2</div>
+            <div class="step-content">
+              <span>Step 2</span>
+              <b>Select plan</b>
             </div>
           </div>
-          <div class="plan-card">
-            <img src="./assets/images/icon-pro.svg" alt="arcade">
-            <div class="plan-info">
-              <b>Pro</b>
-              <span class="plan-priced">$15/mo</span>
+          <div class="step">
+            <div class="circle">3</div>
+            <div class="step-content">
+              <span>Step 3</span>
+              <b>Add-ons</b>
             </div>
           </div>
-        </form>
-        <div class="switcher">
-          <p class="monthly sw">Monthly</p>
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
-          <p class="yearly">Yearly</p>
-        </div>
-        <div class="btns">
-          <button class="prev-stp" type="button">Go Back</button>
-          <button class="next-stp" type="submit">Next Step</button>
-        </div>
-      </div>
-      <!-- Step 2 end -->
-      <!-- * Step 3 start -->
-      <div class="stp step-3">
-        <div class="header">
-          <h1 class="title">Pick add-ons</h1>
-          <p class="exp">Add-ons help enhance your gaming experience.</p>
-        </div>
-        <form>
-          <div class="box">
-            <input type="checkbox" id="online">
-            <div class="description">
-              <label for="online">Online service</label>
-              <small>Access to multiplayer games</small>
+          <div class="step">
+            <div class="circle">4</div>
+            <div class="step-content">
+              <span>Step 4</span>
+              <b>Summary</b>
             </div>
-            <p class="price">+$1/mo</p>
           </div>
-          <div class="box">
-            <input type="checkbox" id="larger">
-            <div class="description">
-              <label for="larger">Larger storage</label>
-              <small>Extra 1TB of cloud save</small>
+        </div>
+        <!-- Sidebar end -->
+        <!-- * Step 1 start -->
+        <div class="stp step-1">
+          <div class="header">
+            <h1 class="title">Personal info</h1>
+            <p class="exp">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <form>
+            <div class="label">
+              <label for="name">Name</label>
+              <p class="error">This Field Is Required</p>
             </div>
-            <p class="price">+$2/mo</p>
-          </div>
-          <div class="box">
-            <input type="checkbox" id="profile">
-            <div class="description">
-              <label for="profile">Customizable Profile</label>
-              <small>Custom theme on your profile</small>
+            <input
+              required
+              type="text"
+              id="name"
+              placeholder="e.g. Stephen King"
+            />
+            <div class="label">
+              <label for="email">Email Address</label>
+              <p class="error">This Field Is Required</p>
             </div>
-            <p class="price">+$2/mo</p>
+            <input
+              required
+              type="text"
+              id="email"
+              placeholder="e.g. stephenking@lorem.com"
+            />
+            <div class="label">
+              <label for="phone">Phone Number</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="tel"
+              id="phone"
+              placeholder="e.g. +1 234 567 890"
+            />
+          </form>
+          <div class="btns">
+            <button class="next-stp" type="submit">Next Step</button>
           </div>
-        </form>
-        <div class="btns">
-          <button class="prev-stp" type="button">Go Back</button>
-          <button class="next-stp" type="submit">Next Step</button>
         </div>
-      </div>
-      <!-- Step 3 end -->
-      <!-- * Step 4 start -->
-      <div class="stp step-4">
-        <div class="header">
-          <h1 class="title">Finishing up</h1>
-          <p class="exp">Double-check everything looks OK before confirming.</p>
-        </div>
-        <div class="selection-box">
-          <div class="selection-container">
-            <div class="selected-plan">
-            <p class="plan-name">Arcade(Monthly)</p>
-            <p class="plan-price">$9/mo</p>
+        <!-- Step 1 end -->
+        <!-- * Step 2 start -->
+        <div class="stp step-2">
+          <div class="header">
+            <h1 class="title">Select your plan</h1>
+            <p class="exp">You have the option of monthly or yearly billing.</p>
           </div>
-          <hr>
-          <div class="addons">
-            <div class="selected-addon"><span class="service-name">Online serivice</span><span class="servic-price">+$1/mo</span></div>
+          <form>
+            <div class="plan-card selected">
+              <img src="./assets/images/icon-arcade.svg" alt="arcade" />
+              <div class="plan-info chosen">
+                <b>Arcade</b>
+                <span class="plan-priced">$9/mo</span>
+              </div>
+            </div>
+            <div class="plan-card">
+              <img src="./assets/images/icon-advanced.svg" alt="arcade" />
+              <div class="plan-info">
+                <b>Advanced</b>
+                <span class="plan-priced">$12/mo</span>
+              </div>
+            </div>
+            <div class="plan-card">
+              <img src="./assets/images/icon-pro.svg" alt="arcade" />
+              <div class="plan-info">
+                <b>Pro</b>
+                <span class="plan-priced">$15/mo</span>
+              </div>
+            </div>
+          </form>
+          <div class="switcher">
+            <p class="monthly sw">Monthly</p>
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+            <p class="yearly">Yearly</p>
           </div>
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit">Next Step</button>
           </div>
-          <p class="total">Total (per month) <b>+$12/mo</b></p>
         </div>
-        <div class="btns">
-          <button class="prev-stp" type="button">Go Back</button>
-          <button class="next-stp" type="submit">Next Step</button>
+        <!-- Step 2 end -->
+        <!-- * Step 3 start -->
+        <div class="stp step-3">
+          <div class="header">
+            <h1 class="title">Pick add-ons</h1>
+            <p class="exp">Add-ons help enhance your gaming experience.</p>
+          </div>
+          <form>
+            <div class="box">
+              <input type="checkbox" id="online" />
+              <div class="description">
+                <label for="online">Online service</label>
+                <small>Access to multiplayer games</small>
+              </div>
+              <p class="price">+$1/mo</p>
+            </div>
+            <div class="box">
+              <input type="checkbox" id="larger" />
+              <div class="description">
+                <label for="larger">Larger storage</label>
+                <small>Extra 1TB of cloud save</small>
+              </div>
+              <p class="price">+$2/mo</p>
+            </div>
+            <div class="box">
+              <input type="checkbox" id="profile" />
+              <div class="description">
+                <label for="profile">Customizable Profile</label>
+                <small>Custom theme on your profile</small>
+              </div>
+              <p class="price">+$2/mo</p>
+            </div>
+          </form>
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit">Next Step</button>
+          </div>
         </div>
+        <!-- Step 3 end -->
+        <!-- * Step 4 start -->
+        <div class="stp step-4">
+          <div class="header">
+            <h1 class="title">Finishing up</h1>
+            <p class="exp">
+              Double-check everything looks OK before confirming.
+            </p>
+          </div>
+          <div class="selection-box">
+            <div class="selection-container">
+              <div class="selected-plan">
+                <p class="plan-name">Arcade(Monthly)</p>
+                <p class="plan-price">$9/mo</p>
+              </div>
+              <hr />
+              <div class="addons">
+                <div class="selected-addon">
+                  <span class="service-name">Online serivice</span
+                  ><span class="servic-price">+$1/mo</span>
+                </div>
+              </div>
+            </div>
+            <p class="total">Total (per month) <b>+$12/mo</b></p>
+          </div>
+          <div class="btns">
+            <button class="prev-stp" type="button">Go Back</button>
+            <button class="next-stp" type="submit">Next Step</button>
+          </div>
+        </div>
+        <!-- Step 4 end -->
       </div>
     </div>
-  </div>
 
-  
+    <div class="hidden">
+      <!-- Step 5 start -->
 
-  
-<div class="hidden">
-  <!-- Step 4 end -->
+      Thank you! Thanks for confirming your subscription! We hope you have fun
+      using our platform. If you ever need support, please feel free to email us
+      at support@loremgaming.com.
 
-  <!-- Step 5 start -->
-
-  Thank you!
-
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
-  to email us at support@loremgaming.com.
-
-  <!-- Step 5 end -->
-</div>
- 
-</body>
+      <!-- Step 5 end -->
+    </div>
+  </body>
 </html>

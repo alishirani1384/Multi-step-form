@@ -7,9 +7,10 @@ const addons = document.querySelectorAll(".box");
 let currentStep = 1;
 let currentCircle = 0;
 const obj = {
-  plan:null,
-  kind:null
-}
+  plan: null,
+  kind: null,
+  price: null,
+};
 
 steps.forEach((step) => {
   const nextBtn = step.querySelector(".next-stp");
@@ -18,25 +19,29 @@ steps.forEach((step) => {
     prevBtn.addEventListener("click", () => {
       document.querySelector(`.step-${currentStep}`).style.display = "none";
       currentStep--;
-        document.querySelector(`.step-${currentStep}`).style.display = "flex";
-        circleSteps[currentCircle].classList.remove("active");
-        currentCircle--;
+      document.querySelector(`.step-${currentStep}`).style.display = "flex";
+      circleSteps[currentCircle].classList.remove("active");
+      currentCircle--;
     });
   }
   nextBtn.addEventListener("click", () => {
     document.querySelector(`.step-${currentStep}`).style.display = "none";
     if (currentStep < 4 && validateForm()) {
-        currentStep++;
-        currentCircle++;
+      currentStep++;
+      currentCircle++;
     }
-      document.querySelector(`.step-${currentStep}`).style.display = "flex";
-    circleSteps[currentCircle].classList.add("active")
-    summary(obj)
+    document.querySelector(`.step-${currentStep}`).style.display = "flex";
+    circleSteps[currentCircle].classList.add("active");
+    summary(obj);
   });
 });
 function summary(obj) {
   const planName = document.querySelector(".plan-name");
-  planName.innerText = `${obj.plan.innerText}(${obj.val ? "yearly" : "monthly"})`;
+  const planPrice = document.querySelector(".plan-price");
+  planPrice.innerHTML = `${obj.price.innerText}`;
+  planName.innerHTML = `${obj.plan.innerText} (${
+    obj.kind ? "yearly" : "monthly"
+  })`;
 }
 function validateForm() {
   let valid = true;
@@ -47,7 +52,7 @@ function validateForm() {
       findLabel(formInputs[i]).nextElementSibling.style.display = "flex";
     } else {
       valid = true;
-      formInputs[i].classList.remove("err")
+      formInputs[i].classList.remove("err");
       findLabel(formInputs[i]).nextElementSibling.style.display = "none";
     }
   }
@@ -61,17 +66,19 @@ function findLabel(el) {
   }
 }
 
-plans.forEach(plan => {
+plans.forEach((plan) => {
   plan.addEventListener("click", () => {
-    document.querySelector(".selected").classList.remove("selected")
+    document.querySelector(".selected").classList.remove("selected");
     plan.classList.add("selected");
-    const planName = plan.querySelector('b');
+    const planName = plan.querySelector("b");
+    const planPrice = plan.querySelector(".plan-priced");
     obj.plan = planName;
-  })
-})
+    obj.price = planPrice;
+  });
+});
 
 switcher.addEventListener("click", () => {
-  const val = switcher.querySelector('input').checked;
+  const val = switcher.querySelector("input").checked;
   if (val) {
     document.querySelector(".monthly").classList.remove("sw");
     document.querySelector(".yearly").classList.add("sw");
@@ -81,17 +88,19 @@ switcher.addEventListener("click", () => {
   }
   switchPrice(val);
   obj.kind = val;
-})
-addons.forEach(addon => {
+});
+addons.forEach((addon) => {
   addon.addEventListener("click", () => {
     const addonSelect = addon.querySelector("input");
     if (addonSelect.checked) {
       addonSelect.checked = false;
+      addon.classList.remove("ad");
     } else {
       addonSelect.checked = true;
+      addon.classList.add("ad");
     }
-  })
-})
+  });
+});
 
 function switchPrice(checked) {
   const yearlyPrice = [90, 120, 150];
@@ -106,5 +115,4 @@ function switchPrice(checked) {
     prices[1].innerHTML = `$${monthlyPrice[1]}/mo`;
     prices[2].innerHTML = `$${monthlyPrice[2]}/mo`;
   }
-  
 }
