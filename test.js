@@ -92,11 +92,11 @@ switcher.addEventListener("click", () => {
 addons.forEach((addon) => {
   addon.addEventListener("click", () => {
     const addonSelect = addon.querySelector("input");
-    
+    const ID = addon.getAttribute("data-id");
     if (addonSelect.checked) {
       addonSelect.checked = false;
       addon.classList.remove("ad");
-      showAddon(addon,false)
+      showAddon(ID,false)
     } else {
       addonSelect.checked = true;
       addon.classList.add("ad");
@@ -124,12 +124,19 @@ function showAddon(ad,val) {
   const clone = temp.content.cloneNode(true);
   const serviceName = clone.querySelector(".service-name");
   const servicePrice = clone.querySelector(".servic-price");
+  const serviceID = clone.querySelector(".selected-addon");
   if (ad && val) {
     serviceName.innerText = ad.querySelector("label").innerText;
-  servicePrice.innerText = ad.querySelector(".price").innerText;
-  document.querySelector(".addons").appendChild(clone)
+    servicePrice.innerText = ad.querySelector(".price").innerText;
+    serviceID.setAttribute("data-id",ad.dataset.id);
+    document.querySelector(".addons").appendChild(clone);
   } else {
-    
-    document.querySelectorAll(".selected-addon")[0].remove();
+    const addons = document.querySelectorAll(".selected-addon");
+    addons.forEach(addon => {
+      const attr = addon.getAttribute("data-id");
+      if (attr == ad) {
+        addon.remove()
+      }
+    })  
   }
 }
