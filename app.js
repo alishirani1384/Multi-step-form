@@ -4,6 +4,8 @@ const formInputs = document.querySelectorAll(".step-1 form input");
 const plans = document.querySelectorAll(".plan-card");
 const switcher = document.querySelector(".switch");
 const addons = document.querySelectorAll(".box");
+const total = document.querySelector(".total b");
+const planPrice = document.querySelector(".plan-price");
 let currentStep = 1;
 let currentCircle = 0;
 const obj = {
@@ -29,6 +31,7 @@ steps.forEach((step) => {
     if (currentStep < 5 && validateForm()) {
       currentStep++;
       currentCircle++;
+      setTotal()
     }
     document.querySelector(`.step-${currentStep}`).style.display = "flex";
     circleSteps[currentCircle].classList.add("active");
@@ -90,7 +93,7 @@ switcher.addEventListener("click", () => {
   obj.kind = val;
 });
 addons.forEach((addon) => {
-  addon.addEventListener("click", () => {
+  addon.addEventListener("click", (e) => {
     const addonSelect = addon.querySelector("input");
     const ID = addon.getAttribute("data-id");
     if (addonSelect.checked) {
@@ -101,6 +104,7 @@ addons.forEach((addon) => {
       addonSelect.checked = true;
       addon.classList.add("ad");
       showAddon(addon, true);
+      e.preventDefault()
     }
   });
 });
@@ -139,4 +143,23 @@ function showAddon(ad, val) {
       }
     });
   }
+}
+
+function setTotal() {
+  const str = planPrice.innerHTML;
+  const res = str.replace(/\D/g, "");
+  const addonPrices = document.querySelectorAll(
+    ".selected-addon .servic-price"
+  );
+
+  let val = 0;
+  for (let i = 0; i < addonPrices.length; i++) {
+    const str = addonPrices[i].innerHTML;
+    const res = str.replace(/\D/g, "");
+    
+    val += Number(res);
+  }
+  
+  total.innerHTML =`$${val + Number(res)}/yr`;
+  console.log(addonPrices)
 }
