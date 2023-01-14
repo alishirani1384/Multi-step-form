@@ -26,7 +26,7 @@ steps.forEach((step) => {
   }
   nextBtn.addEventListener("click", () => {
     document.querySelector(`.step-${currentStep}`).style.display = "none";
-    if (currentStep < 4 && validateForm()) {
+    if (currentStep < 5 && validateForm()) {
       currentStep++;
       currentCircle++;
     }
