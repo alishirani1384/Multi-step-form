@@ -6,6 +6,7 @@ const switcher = document.querySelector(".switch");
 const addons = document.querySelectorAll(".box");
 const total = document.querySelector(".total b");
 const planPrice = document.querySelector(".plan-price");
+let time;
 let currentStep = 1;
 let currentCircle = 0;
 const obj = {
@@ -31,7 +32,7 @@ steps.forEach((step) => {
     if (currentStep < 5 && validateForm()) {
       currentStep++;
       currentCircle++;
-      setTotal()
+      setTotal();
     }
     document.querySelector(`.step-${currentStep}`).style.display = "flex";
     circleSteps[currentCircle].classList.add("active");
@@ -83,11 +84,11 @@ plans.forEach((plan) => {
 switcher.addEventListener("click", () => {
   const val = switcher.querySelector("input").checked;
   if (val) {
-    document.querySelector(".monthly").classList.remove("sw");
-    document.querySelector(".yearly").classList.add("sw");
+    document.querySelector(".monthly").classList.remove("sw-active");
+    document.querySelector(".yearly").classList.add("sw-active");
   } else {
-    document.querySelector(".monthly").classList.add("sw");
-    document.querySelector(".yearly").classList.remove("sw");
+    document.querySelector(".monthly").classList.add("sw-active");
+    document.querySelector(".yearly").classList.remove("sw-active");
   }
   switchPrice(val);
   obj.kind = val;
@@ -98,13 +99,13 @@ addons.forEach((addon) => {
     const ID = addon.getAttribute("data-id");
     if (addonSelect.checked) {
       addonSelect.checked = false;
-      addon.classList.remove("ad");
+      addon.classList.remove("ad-selected");
       showAddon(ID, false);
     } else {
       addonSelect.checked = true;
-      addon.classList.add("ad");
+      addon.classList.add("ad-selected");
       showAddon(addon, true);
-      e.preventDefault()
+      e.preventDefault();
     }
   });
 });
@@ -117,10 +118,12 @@ function switchPrice(checked) {
     prices[0].innerHTML = `$${yearlyPrice[0]}/yr`;
     prices[1].innerHTML = `$${yearlyPrice[1]}/yr`;
     prices[2].innerHTML = `$${yearlyPrice[2]}/yr`;
+    setTime(true)
   } else {
     prices[0].innerHTML = `$${monthlyPrice[0]}/mo`;
     prices[1].innerHTML = `$${monthlyPrice[1]}/mo`;
     prices[2].innerHTML = `$${monthlyPrice[2]}/mo`;
+    setTime(false)
   }
 }
 function showAddon(ad, val) {
@@ -156,10 +159,11 @@ function setTotal() {
   for (let i = 0; i < addonPrices.length; i++) {
     const str = addonPrices[i].innerHTML;
     const res = str.replace(/\D/g, "");
-    
+
     val += Number(res);
   }
-  
-  total.innerHTML =`$${val + Number(res)}/yr`;
-  console.log(addonPrices)
+  total.innerHTML = `$${val + Number(res)}/${time?"yr":"mo"}`;
+}
+function setTime(t) {
+  return time = t;
 }

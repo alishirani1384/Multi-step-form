@@ -192,7 +192,7 @@ form .error {
   color: var(--Cool-gray);
   font-weight: 500;
 }
-.sw {
+.sw-active {
   color: var(--Marine-blue);
 }
 .btns {
@@ -240,7 +240,7 @@ form .error {
 .price {
   margin-left: auto;
 }
-.ad {
+.ad-selected {
   border: 1px solid var(--Purplish-blue);
   background-color: var(--Magnolia);
 }
@@ -310,7 +310,7 @@ form .error {
   font-size: 1.2rem;
 }
 /* step 5 */
-.step-5{
+.step-5 {
   display: none;
   align-items: center;
   width: 90%;
@@ -318,7 +318,7 @@ form .error {
   justify-content: center;
   margin: auto;
 }
-.step-5 button{
+.step-5 button {
   display: none;
 }
 /* SWITCH classes */
